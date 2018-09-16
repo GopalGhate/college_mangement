@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+	<title>Teacher Login</title>
+</head>
+<body >
+ <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <style type="text/css">
+      .bg-light {
+       background-color: #083989!important;
+     }
+   </style>
+   <a class="navbar-brand" href="#" style="color: #ffffff;    font-size: 2.0rem;"><strong>Student Information System</strong></a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+</div>
+<br>
+<br>
+<div   style="width: 30%;border: 1px solid;padding: 20px;margin: 0 auto;">{% csrf_token %}
+
+        <div class="form-group">
+         <p><strong>Select Operation </strong></p>
+        </div>
+        <div class="form-group">
+        <!--  <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username" name="user" required>-->
+
+            <li>
+               <a href="" data-toggle="modal" data-target="#ModalforStudent" >Add Student</a>
+            </li>
+
+
+        </div>
+
+      </div>
+ <!-- Add Teacher Form -->
+<div class="modal fade" id="ModalforStudent" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Student Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+       <!-- Branch form-->
+       <form action="/add/addStudent" method="POST">{% csrf_token %}
+
+           <div class="form-group">
+             <label for="StudentName">Student Name:</label>
+             <input type="text" class="form-control" id="StudentName" name="StudentName">
+           </div>
+
+           <div class="form-group">
+             <label for="username">User Name:</label>
+             <input type="text" class="form-control" id="username" name="userName">
+           </div>
+
+           <div class="form-group">
+             <label for="password">Password:</label>
+             <input type="text" class="form-control" id="password" name="password">
+           </div>
+
+           <div class="form-group">
+             <label for="Roll_NO">ROLL_NO:</label>
+             <input type="text" class="form-control" id="Roll_NO" name="rollNo">
+           </div>
+
+
+           <select class="form-control" id="CourseID" name="CourseName" required>
+               <option value="None">Select Course</option>
+               <option value="BE">BE</option>
+               <option value="BSC">BSC</option>
+          </select>
+
+           <select class="form-control" id="DepartmentID" name="DepartmentName" required>
+               <option value="None">Select Department</option>
+               <option value="Electrical">Electrical</option>
+               <option value="Mechanical">Mechanical</option>
+          </select>
+
+            <div class="form-group">
+             <label for="ParentName">Parent Name:</label>
+             <input type="text" class="form-control" id="ParentName" name="parentName">
+           </div>
+
+            <div class="form-group">
+             <label for="Contact_no">Contact Info:</label>
+             <input type="text" class="form-control" id="Contact_no" name="contactInfo">
+           </div>
+
+           <div class="form-group">
+             <label for="ParentCode">Parent Code:</label>
+             <input type="text" class="form-control" id="ParentCode" name="parentCode">s
+           </div>
+
+           <div class="form-group">
+             <label for="ParentUserName">Parent User Name:</label>
+             <input type="text" class="form-control" id="ParentUserName" name="parentuserName">
+           </div>
+
+            <div class="form-group">
+             <label for="parentpassword">Password:</label>
+             <input type="text" class="form-control" id="parentpassword" name="parentPassword">
+           </div>
+
+
+
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <button type="submit" class="btn  btn-dark" style="margin: 10px;" >   <strong>Save   Information </strong> </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- End of Teacher form -->
+<!-- Department form -->
+
+<div class="modal fade" id="ModalforDepartment" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Department Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+       <!-- Branch form-->
+       <form action="/add/addDepartment" method="POST">{% csrf_token %}
+
+           <div class="form-group">
+             <label for="departmentName">Department Name:</label>
+             <input type="text" class="form-control" id="DepartmentName" name="departmentName">
+           </div>
+
+            <div class="form-group">
+             <label for="departmentType">Department Type:</label>
+             <input type="text" class="form-control" id="departmentType" name="departmentType">
+           </div>
+
+            <div class="form-group">
+             <label for="departmentHod">Department HOD:</label>
+             <input type="text" class="form-control" id="departmentHod" name="departmentHod">
+           </div>
+
+
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <button type="submit" class="btn  btn-dark" style="margin: 10px;" >   <strong>Save   Information </strong> </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- End of Department form -->
+<!-- Department form -->
+
+<!-- Add Course Form -->
+
+<!-- End of Course form -->
+
+
+<!-- End of Subject form -->
+
+
+</body>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+-->
+</html>

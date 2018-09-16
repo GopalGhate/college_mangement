@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+	<title>Super_admin</title>
+</head>
+<body >
+ <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <style type="text/css">
+      .bg-light {
+       background-color: #083989!important;
+     }
+   </style>
+   <a class="navbar-brand" href="#" style="color: #ffffff;    font-size: 2.0rem;"><strong>Student Information System</strong></a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+</div>
+<br>
+<br>
+<div   style="width: 30%;border: 1px solid;padding: 20px;margin: 0 auto;">{% csrf_token %}
+
+        <div class="form-group">
+         <p><strong>Select Operation </strong></p>
+        </div>
+        <div class="form-group">
+        <!--  <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username" name="user" required>-->
+            <li>
+                <a href="#">Add Institute</a>
+            </li>
+            <li>
+               <a href="" data-toggle="modal" data-target="#ModalforDepartment" >Add Department</a>
+            </li>
+            <li>
+               <a href="" data-toggle="modal" data-target="#ModalForTeacher">Add Teacher</a>
+            </li>
+            <li>
+                <a href="" data-toggle="modal" data-target="#ModelForCourse">Add Course</a>
+            </li>
+            <li>
+                <a href="" data-toggle="modal" data-target="#ModelForSubject">Add Subject</a>
+            </li>
+
+        </div>
+
+      </div>
+ <!-- Add Teacher Form -->
+<div class="modal fade" id="ModalForTeacher" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Teacher Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+       <!-- Branch form-->
+       <form action="/add/addTeacher" method="POST">{% csrf_token %}
+
+           <div class="form-group">
+             <label for="tecaherName">Teacher Name:</label>
+             <input type="text" class="form-control" id="tecaherName" name="teacherName">
+           </div>
+
+           <div class="form-group">
+             <label for="username">User Name:</label>
+             <input type="text" class="form-control" id="username" name="userName">
+           </div>
+
+           <div class="form-group">
+             <label for="password">Password:</label>
+             <input type="text" class="form-control" id="password" name="password">
+           </div>
+
+
+           <select class="form-control" id="DepartmentID" name="DepartmentName" required>
+               <option value="None">Select Department</option>
+               <option value="Electrical">Electrical</option>
+               <option value="Mechanical">Mechanical</option>
+          </select>
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <button type="submit" class="btn  btn-dark" style="margin: 10px;" >   <strong>Save   Information </strong> </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- End of Teacher form -->
+<!-- Department form -->
+
+<div class="modal fade" id="ModalforDepartment" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Department Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+       <!-- Branch form-->
+       <form action="/add/addDepartment" method="POST">{% csrf_token %}
+
+           <div class="form-group">
+             <label for="departmentName">Department Name:</label>
+             <input type="text" class="form-control" id="DepartmentName" name="departmentName">
+           </div>
+
+            <div class="form-group">
+             <label for="departmentType">Department Type:</label>
+             <input type="text" class="form-control" id="departmentType" name="departmentType">
+           </div>
+
+            <div class="form-group">
+             <label for="departmentHod">Department HOD:</label>
+             <input type="text" class="form-control" id="departmentHod" name="departmentHod">
+           </div>
+
+
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <button type="submit" class="btn  btn-dark" style="margin: 10px;" >   <strong>Save   Information </strong> </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- End of Department form -->
+<!-- Department form -->
+
+<!-- Add Course Form -->
+<div class="modal fade" id="ModelForCourse" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Course Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+       <!-- Branch form-->
+       <form action="/add/addCourse" method="POST">{% csrf_token %}
+
+           <div class="form-group">
+             <label for="courseName">Course Name:</label>
+             <input type="text" class="form-control" id="courseName" name="courseName">
+           </div>
+
+           <div class="form-group">
+             <label for="courseCode">Course Code:</label>
+             <input type="text" class="form-control" id="courseCode" name="courseCode">
+           </div>
+
+           <select class="form-control" id="CourseDepartmentID" name="CourseDepartmentName" required>
+               <option value="None">Select Department</option>
+               <option value="Electrical">Electrical</option>
+               <option value="Mechanical">Mechanical</option>
+          </select>
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <button type="submit" class="btn  btn-dark" style="margin: 10px;" >   <strong>Save   Information </strong> </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- End of Course form -->
+
+<!-- Add Subject Form -->
+<div class="modal fade" id="ModelForSubject" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h4 class="modal-title">Subject Form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+      </div>
+      <div class="modal-body">
+       <!-- Branch form-->
+       <form action="/add/addSubject" method="POST">{% csrf_token %}
+
+           <div class="form-group">
+             <label for="subjectName">Subject Name:</label>
+             <input type="text" class="form-control" id="subjectName" name="subjectName">
+           </div>
+
+           <div class="form-group">
+             <label for="subjectCode">Subject Code:</label>
+             <input type="text" class="form-control" id="subjectCode" name="subjectCode">
+           </div>
+
+           <div class="form-group">
+             <label for="minMarks">Minimum Passing:</label>
+             <input type="number" class="form-control" id="minMarks" name="minMarks">
+           </div>
+
+           <div class="form-group">
+             <label for="totalMarks">Total Marks:</label>
+             <input type="number" class="form-control" id="totalMarks" name="totalMarks">
+           </div>
+
+        <div class="row text-center">
+          <div class="col-lg-12">
+            <button type="submit" class="btn  btn-dark" style="margin: 10px;" >   <strong>Save   Information </strong> </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- End of Subject form -->
+
+
+</body>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+-->
+</html>
